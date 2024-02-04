@@ -47,11 +47,19 @@ bool Row::empty() const {
 }
 
 const Tile& Row::begin() const {
-	return this->at(0);
+	return (*this).at(0);
 }
 
 Tile& Row::begin() {
-	return this->at(0);
+	return (*this).at(0);
+}
+
+const Tile& Row::end() const {
+	return (*this).at(m_size - 1);
+}
+
+Tile& Row::end() {
+	return (*this).at(m_size - 1);
 }
 
 void Row::arrResize() {

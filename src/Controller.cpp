@@ -3,7 +3,7 @@
 Controller::Controller() : m_col(0), m_row(0) {
 	readData();
 	fillData();
-
+	openWindow();
 }
 
 void Controller::readData() {
@@ -19,6 +19,26 @@ void Controller::fillData() {
 		for (int j = 0; j < m_col; j++) {
 			Tile tile(j, ' ');
 			m_rows[i].push_back(tile);
+		}
+	}
+}
+
+void Controller::openWindow(){
+	m_window.create(sf::VideoMode(m_row  , m_col), "Tom&Jerry");
+	//using namespace std::chrono_literals;
+	//std::this_thread::sleep_for(30s);
+	while (m_window.isOpen())
+	{
+		m_window.clear();
+		m_window.display();
+		if (auto event = sf::Event{}; m_window.waitEvent(event))
+		{
+			switch (event.type)
+			{
+			case sf::Event::Closed:
+				m_window.close();
+				break;
+			}
 		}
 	}
 }

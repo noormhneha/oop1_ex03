@@ -19,6 +19,8 @@ public:
 	bool empty() const;
 	const Tile& begin() const;
 	Tile& begin();
+	const Tile& end() const;
+	Tile& end();
 
 	~Row();
 

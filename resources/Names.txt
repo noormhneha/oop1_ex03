@@ -1,0 +1,10 @@
+Mouse.png
+Cat.png
+Cheese.png
+Wall.png
+Key.png
+Door.png
+Gift.png
+Save.png
+Erase.png
+Clear.png

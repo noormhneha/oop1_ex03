@@ -1,6 +1,4 @@
 #pragma once
-// Amr shwiki , 212443485
-// Anas dweik , 32236013
 
 #include "Icon.h"
 

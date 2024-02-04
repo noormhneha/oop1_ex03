@@ -5,8 +5,7 @@
 #include "GameTools.h"
 
 
-class Cat : public Icon
-{
+class Cat : public Icon {
 public:
 	Cat() { m_shape = DEMON;}
 };

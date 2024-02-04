@@ -25,22 +25,22 @@ void Controller::fillData() {
 
 void Controller::openWindow(){
 	m_window.create(sf::VideoMode(m_row  , m_col), "Tom&Jerry");
-	//using namespace std::chrono_literals;
-	//std::this_thread::sleep_for(30s);
+
 	while (m_window.isOpen())
 	{
 		m_window.clear();
 		m_window.display();
-		if (auto event = sf::Event{}; m_window.waitEvent(event))
-		{
-			switch (event.type)
-			{
+		if (auto event = sf::Event{}; m_window.waitEvent(event)) {
+			switch (event.type) {
 			case sf::Event::Closed:
 				m_window.close();
+				break;
+			case sf::Event::MouseButtonReleased:
+				
 				break;
 			}
 		}
 	}
 }
 
-Controller::~Controller() {}
+Controller::~Controller() { }

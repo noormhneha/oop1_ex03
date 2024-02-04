@@ -1,14 +1,13 @@
 #pragma once
 
-#include "GameTools.h"
-
+#include "SideTools.h"
 
 class Icon {
 public:
+	//Icon() = default;
 	void draw(sf::RenderWindow&, sf::Vector2f, sf::Sprite);
-	Toolbar_t getShape();
+	IconsBar getShape();
 	
 protected:
-	Toolbar_t m_shape;
-	Toolbar_t m_color;
+	IconsBar m_shape;
 };

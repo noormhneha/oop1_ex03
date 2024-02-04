@@ -6,6 +6,6 @@ void Icon::draw(sf::RenderWindow& window, sf::Vector2f pos, sf::Sprite sprite) {
 	window.draw(sprite);
 }
 
-Toolbar_t Icon::getShape() {
+IconsBar Icon::getShape() {
 	return m_shape;
 }

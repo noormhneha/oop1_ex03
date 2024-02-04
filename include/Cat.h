@@ -1,11 +1,8 @@
 #pragma once
-// Amr shwiki , 212443485
-// Anas dweik , 32236013
 
-#include "GameTools.h"
-
+#include "Icon.h"
 
 class Cat : public Icon {
 public:
-	Cat() { m_shape = DEMON;}
+	Cat() { m_shape = CAT;}
 };

@@ -1,11 +1,9 @@
 #pragma once
 #include <SFML\Graphics.hpp>
-#include <vector>
 
-using std::vector;
 
 // icon names
-enum Toolbar_t { MOUSE, CAT, CHEESE, WALL, KEY, DOOR, GIFT, SAVE, ERASE, RESET};
+enum IconsBar { MOUSE, CAT, CHEESE, WALL, KEY, DOOR, GIFT, SAVE, ERASE, RESET};
 
 const int NUM_OF_ICONS = 10; // number of icons
 const unsigned int P_SIZE = 40; // pixel size

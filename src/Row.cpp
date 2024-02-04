@@ -31,6 +31,14 @@ Tile& Row::at(int index) {
 	return m_data[index];
 }
 
+const Tile& Row::operator[](int index) const {
+	return m_data[index];
+}
+
+Tile& Row::operator[](int index) {
+	return m_data[index];
+}
+
 void Row::push_back(const Tile& val) {
 	m_isEmpty = false;
 	arrResize();

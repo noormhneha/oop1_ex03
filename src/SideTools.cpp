@@ -23,10 +23,9 @@ void SideTools::setToolbar()
 
 	// Read and print each line until the end of the file
 	while (std::getline(inputFile, line)) {
-		m_pTexture[Toolbar_t(i)].loadFromFile(line);
+		m_pTexture[IconsBar(i)].loadFromFile(line);
 		m_sprite[i].setTexture(m_pTexture[i]);
-		float x = m_sprite[0].getGlobalBounds().height;
-		float y = m_sprite[0].getScale().y;
+		
 		m_sprite[i].setScale(sf::Vector2f(((float)P_SIZE / m_sprite[i].getGlobalBounds().height), ((float)P_SIZE / m_sprite[i].getGlobalBounds().height)));
 		m_sprite[i].setPosition(m_positions[i]);
 		i++;

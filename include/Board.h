@@ -18,7 +18,7 @@
 
 class Board {
 public:
-	Board();
+	Board(sf::RenderWindow&);
 	
 private:
 	SideTools m_sideTools;

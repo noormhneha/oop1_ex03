@@ -25,11 +25,9 @@ void Controller::fillData() {
 
 void Controller::openWindow(){
 	m_window.create(sf::VideoMode(m_row  , m_col), "Tom&Jerry");
-	// board(m_window)
 	while (m_window.isOpen())
 	{
-		m_window.clear();
-		m_window.display();
+		Board board(m_window);
 		if (auto event = sf::Event{}; m_window.waitEvent(event)) {
 			switch (event.type) {
 			case sf::Event::Closed:

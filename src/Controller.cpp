@@ -7,10 +7,19 @@ Controller::Controller() : m_col(0), m_row(0) {
 }
 
 void Controller::readData() {
-	std::cout << "Insert number of rows: ";
-	std::cin >> m_row;
-	std::cout << "Insert number of cols: ";
-	std::cin >> m_col;
+    m_file.open("Board.txt");
+    m_file.is_open() ? readFromFile() : readFromUser();
+}
+
+void Controller::readFromFile(){
+    m_file >> m_row >> m_col;
+}
+
+void Controller::readFromUser(){
+    std::cout << "Insert number of rows: ";
+    std::cin >> m_row;
+    std::cout << "Insert number of cols: ";
+    std::cin >> m_col;
 }
 
 void Controller::fillData() {

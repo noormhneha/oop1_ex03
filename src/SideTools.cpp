@@ -2,14 +2,13 @@
 #include <iostream>
 #include <fstream>
 
-SideTools::SideTools()
-{
-	for (size_t i = 0; i < NUM_OF_ICONS; i++)
-		m_positions[i] = sf::Vector2f(0, i * (float)P_SIZE);
+SideTools::SideTools() {
+	for (size_t i = 0; i < NUM_OF_ICONS; i++) {
+        m_positions[i] = sf::Vector2f(0, i * (float) P_SIZE);
+    }
 }
 
-void SideTools::setToolbar()
-{
+void SideTools::setToolbar() {
 	std::ifstream inputFile("Names.txt");
 
 	// Check if the file is successfully opened
@@ -35,8 +34,8 @@ void SideTools::setToolbar()
 	inputFile.close();
 }
 
-void SideTools::drawToolbar(sf::RenderWindow& window)
-{
-	for (size_t i = 0; i < NUM_OF_ICONS; i++)
-		window.draw(m_sprite[i]);
+void SideTools::drawToolbar(sf::RenderWindow& window) {
+	for (size_t i = 0; i < NUM_OF_ICONS; i++) {
+        window.draw(m_sprite[i]);
+    }
 }

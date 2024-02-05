@@ -12,12 +12,18 @@ public:
 
 private:
 	void readData();
+    void readFromFile();
+    void readFromUser();
+
 	void fillData();
+
 	void openWindow();
 
 	int m_row;
 	int m_col;
 	Row* m_rows;
+
+    std::fstream m_file;
 
 	sf::RenderWindow m_window;
 };

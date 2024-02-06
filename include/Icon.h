@@ -4,9 +4,11 @@
 
 class Icon {
 public:
-	//Icon() = default;
+	Icon() = default;
+
 	void draw(sf::RenderWindow&, sf::Vector2f, sf::Sprite);
-	IconsBar getShape();
+	sf::Vector2f getIconPressed(const sf::Event&) const;
+	IconsBar getShape() const;
 	
 protected:
 	IconsBar m_shape;

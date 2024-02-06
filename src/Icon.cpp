@@ -1,4 +1,3 @@
-
 #include "Icon.h"
 
 void Icon::draw(sf::RenderWindow& window, sf::Vector2f pos, sf::Sprite sprite) {
@@ -6,6 +5,10 @@ void Icon::draw(sf::RenderWindow& window, sf::Vector2f pos, sf::Sprite sprite) {
 	window.draw(sprite);
 }
 
-IconsBar Icon::getShape() {
+sf::Vector2f Icon::getIconPressed(const sf::Event& pressedEvent) const {
+	return { pressedEvent.mouseButton.x , pressedEvent.mouseButton.y };
+}
+
+IconsBar Icon::getShape() const{
 	return m_shape;
 }

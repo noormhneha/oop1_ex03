@@ -5,10 +5,6 @@ void Icon::draw(sf::RenderWindow& window, sf::Vector2f pos, sf::Sprite sprite) {
 	window.draw(sprite);
 }
 
-sf::Vector2f Icon::getIconPressed(const sf::Event& pressedEvent) const {
-	return { pressedEvent.mouseButton.x , pressedEvent.mouseButton.y };
-}
-
 IconsBar Icon::getShape() const{
 	return m_shape;
 }

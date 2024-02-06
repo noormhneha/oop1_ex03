@@ -17,30 +17,18 @@ void Controller::openWindow(){
 				m_window.close();
 				break;
 			case sf::Event::MouseButtonReleased:
-				location = m_board.getIconsLocation(event);
-				m_board.setIcon(choosingIcon(location));
+				//location = m_board.getIconsLocation(event);
+
+				/*auto location = m_window.mapPixelToCoords(
+					{ event.mouseButton.x, event.mouseButton.y });*/ //v
+
+
+				//m_board.setIcon(choosingIcon(location));
+
+				
 				break;
 			}
 		}
 		m_window.display();
-	}
-}
-
-IconsBar Controller::choosingIcon(const Location& loc) {
-	if ((int)loc._row == 0) {
-		switch ((int)loc._col)
-		{
-		case MOUSE: return MOUSE;
-		case CAT: return CAT;
-		case CHEESE: return CHEESE;
-		case WALL: return WALL;
-		case KEY: return KEY;
-		case DOOR: return DOOR;
-		case GIFT: return GIFT;
-		case SAVE: return SAVE;
-		case ERASE: return ERASE;
-		case RESET: return RESET;
-		default: break;
-		}
 	}
 }

@@ -16,6 +16,8 @@ public:
 	void setToolbar();
 	void drawToolbar(sf::RenderWindow& window);
 
+	IconsBar getNameOfIcon(sf::Vector2f);
+	IconsBar getIcon(sf::Vector2f, bool&, bool&, bool&);
 private:
 	sf::Vector2f m_positions[NUM_OF_ICONS];
 	sf::Texture m_pTexture[NUM_OF_ICONS];

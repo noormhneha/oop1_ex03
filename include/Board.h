@@ -10,37 +10,35 @@
 
 
 // Symbols 
-//const char MOUSE = '%';
-//const char CAT = '^';
-//const char DOOR = 'D';
-//const char WALL = '#';
-//const char KEY = 'F';
-//const char CHEESE = '*';
-//const char GIFT = '$';
-//const char ROAD = ' ';
+const char MOUSE_CH = '%';
+const char CAT_CH = '^';
+const char DOOR_CH = 'D';
+const char WALL_CH = '#';
+const char KEY_CH = 'F';
+const char CHEESE_CH = '*';
+const char GIFT_CH = '$';
+const char ROAD_CH = ' ';
 
 struct Location {
-	float _row;
-	float _col;
+	int _row;
+	int _col;
 };
 
 class Board {
 public:
-	//Board(sf::RenderWindow&);
 	Board();
 
 	Location getLocation() const;
-	Location getIconsLocation(const sf::Event&) const;
 
-	void setIcon(IconsBar);
+	void buttonReleased(sf::Event event, sf::RenderWindow& window);
 
 	void draw(sf::RenderWindow&);
+	char convertIconToChar(const IconsBar&);
 	
 private:
 	void readData();
 	void readFromFile();
 	void readFromUser();
-
 	void fillData();
 
 
@@ -51,6 +49,13 @@ private:
 	std::fstream m_file;
 
 	SideTools m_sideTools;
-	IconsBar m_iconShapes; // shape
-	Icon m_icons;
+
+	IconsBar m_iconShape; // new shape
+	char m_nextChar;
+
+	bool m_save = false;
+	bool m_delete = false;
+	bool m_restart = false;
+	
+
 };

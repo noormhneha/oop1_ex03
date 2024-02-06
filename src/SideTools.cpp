@@ -39,3 +39,46 @@ void SideTools::drawToolbar(sf::RenderWindow& window) {
         window.draw(m_sprite[i]);
     }
 }
+
+
+// returns the icons name
+IconsBar SideTools::getNameOfIcon(sf::Vector2f vec)
+{
+	for (size_t i = 0; i < NUM_OF_ICONS; i++)
+	{
+		if (m_positions[i] == vec)
+			return (IconsBar)i;
+	}
+	return (IconsBar)0;
+}
+
+IconsBar SideTools::getIcon(sf::Vector2f pos, bool& save, bool& deleteMode, bool& restart)
+{
+	IconsBar icon = getNameOfIcon(pos);
+	deleteMode = false;
+	switch (icon)
+	{
+	case MOUSE: return MOUSE;
+	case CAT: return CAT;
+	case CHEESE: return CHEESE;
+	case WALL: return WALL;
+	case KEY: return KEY;
+	case DOOR: return DOOR;
+	case GIFT: return GIFT;
+	case SAVE:
+		save = true;
+		return SAVE;
+	case ERASE:
+		deleteMode = true;	
+		return ERASE;
+	case RESET:
+		restart = true;
+		return RESET;
+	default: break;
+	}
+	return IconsBar();
+}
+
+
+
+

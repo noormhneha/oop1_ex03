@@ -11,7 +11,7 @@ public:
 
 private:
 	void openWindow();
-	IconsBar choosingIcon(const Location&);
+	IconsBar choosingIcon(const sf::Vector2f&);
 	Board m_board;
 	sf::RenderWindow m_window;
 };

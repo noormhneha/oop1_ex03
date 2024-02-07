@@ -18,14 +18,7 @@ void Controller::openWindow(){
 				break;
 			case sf::Event::MouseButtonReleased:
 				//location = m_board.getIconsLocation(event);
-
-				/*auto location = m_window.mapPixelToCoords(
-					{ event.mouseButton.x, event.mouseButton.y });*/ //v
-
-
-				//m_board.setIcon(choosingIcon(location));
-
-				
+				m_board.buttonReleased(event, m_window);
 				break;
 			}
 		}

@@ -22,7 +22,6 @@ Row& Row::operator=(const Row& other) {
 	return *this;
 }
 
-
 const Tile& Row::at(int index) const {
 	return m_data[index];
 }

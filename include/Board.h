@@ -4,10 +4,10 @@
 #include <fstream>
 #include <SFML/Graphics.hpp>
 
-#include "SideTools.h"
 #include "Icon.h"
 #include "Row.h"
-
+#include "Utilities.h"
+#include "SideTools.h"
 
 // Symbols 
 const char MOUSE_CH = '%';
@@ -19,10 +19,6 @@ const char CHEESE_CH = '*';
 const char GIFT_CH = '$';
 const char ROAD_CH = ' ';
 
-struct Location {
-	int _row;
-	int _col;
-};
 
 class Board {
 public:
@@ -33,7 +29,10 @@ public:
 	void buttonReleased(sf::Event event, sf::RenderWindow& window);
 
 	void draw(sf::RenderWindow&);
-	char convertIconToChar(const IconsBar&);
+	char convertIconToChar(const IconsBar&) const;
+	IconsBar convertCharToIcon(char) const;
+
+
 	
 private:
 	void readData();
@@ -41,6 +40,11 @@ private:
 	void readFromUser();
 	void fillData();
 
+	void checkIconValidation(char, sf::Vector2i);
+	void saveDeleteRestart(sf::Vector2i);
+	void saveToFile();
+	void resetMap();
+	void deleteObject(sf::Vector2i);
 
 	int m_row;
 	int m_col;
@@ -50,12 +54,12 @@ private:
 
 	SideTools m_sideTools;
 
+	Icon m_icon; 
 	IconsBar m_iconShape; // new shape
 	char m_nextChar;
 
-	bool m_save = false;
-	bool m_delete = false;
-	bool m_restart = false;
-	
+	Buttons m_buttons;
+	Location m_mouseLocation;
 
+	//Icon getIcon() const;
 };

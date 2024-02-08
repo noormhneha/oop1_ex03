@@ -31,17 +31,15 @@ public:
 	void draw(sf::RenderWindow&);
 	char convertIconToChar(const IconsBar&) const;
 	IconsBar convertCharToIcon(char) const;
-
-
-	
 private:
 	void readData();
 	void readFromFile();
 	void readFromUser();
+	void information();
 	void fillData();
 
-	void checkIconValidation(char, sf::Vector2i);
-	void saveDeleteRestart(sf::Vector2i);
+	void checkIconValidation(sf::Vector2i);
+	void saveRestart();
 	void saveToFile();
 	void resetMap();
 	void deleteObject(sf::Vector2i);
@@ -60,6 +58,4 @@ private:
 
 	Buttons m_buttons;
 	Location m_mouseLocation;
-
-	//Icon getIcon() const;
 };

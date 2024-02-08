@@ -17,7 +17,7 @@ public:
 	void drawToolbar(sf::RenderWindow& window);
 
 	IconsBar getNameOfIcon(sf::Vector2f);
-	IconsBar getIcon(sf::Vector2f, Buttons&);
+	IconsBar getIcon(sf::Vector2f);
 
 	sf::Sprite getIconSprite(int) const;
 private:

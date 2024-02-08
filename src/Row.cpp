@@ -82,6 +82,9 @@ void Row::copyData(Tile* arr1, const Tile* arr2) {
 	}
 }
 
+Tile Row::getLine(int i) {
+	return m_data[i];
+}
 Row::~Row() {
 	delete[] m_data;
 }

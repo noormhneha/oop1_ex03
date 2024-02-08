@@ -5,7 +5,6 @@ Controller::Controller() {
 }
 
 void Controller::openWindow(){
-
 	Location location = m_board.getLocation();
 	m_window.create(sf::VideoMode((location._row * P_SIZE)  ,(location._col + 1) * P_SIZE), "Tom&Jerry");
 	while (m_window.isOpen()) {
@@ -17,7 +16,6 @@ void Controller::openWindow(){
 				m_window.close();
 				break;
 			case sf::Event::MouseButtonReleased:
-				//location = m_board.getIconsLocation(event);
 				m_board.buttonReleased(event, m_window);
 				break;
 			}

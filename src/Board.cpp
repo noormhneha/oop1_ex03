@@ -16,10 +16,30 @@ void Board::readFromFile() {
 }
 
 void Board::readFromUser() {
-	std::cout << "Insert number of rows: ";
-	std::cin >> m_row;
-	std::cout << "Insert number of cols: ";
-	std::cin >> m_col;
+	do {
+		information();
+		std::cout << "Insert number of rows: ";
+		std::cin >> m_row;
+		std::cout << "Insert number of cols: ";
+		std::cin >> m_col;
+	} while (m_row < 10 && m_col < 3);
+}
+
+void Board::information() {
+	system("cls");
+	std::fstream info("information.txt");
+	if (info.is_open()) {
+		std::string line;
+		while (std::getline(info, line)) {
+			std::cout << line << std::endl;
+		}
+		std::cout << std::endl;
+		info.close();
+	}
+	else {
+		std::cerr << "Unable to open file!" << std::endl;
+		exit(EXIT_FAILURE);
+	}
 }
 
 void Board::fillData() {
@@ -43,15 +63,18 @@ void Board::buttonReleased(sf::Event event, sf::RenderWindow& window)
 	int y = event.mouseButton.y;
 
 	sf::Vector2f pos((float)(x - (x % P_SIZE)), (float)(y - (y % P_SIZE)));
-	sf::Vector2i item = { (int)(std::floor(x / P_SIZE)), (int)(std::floor(y / P_SIZE)) };
+	sf::Vector2i item;
 	if (pos.x == 0) {
-		m_iconShape = m_sideTools.getIcon(pos, m_buttons);
-		m_nextChar = convertIconToChar(m_iconShape); 
-		saveDeleteRestart(item);
-		// need to check save restart or delete
+		m_iconShape = m_sideTools.getIcon(pos);
+		if (m_iconShape != ERASE) {
+			m_nextChar = convertIconToChar(m_iconShape);
+			saveRestart();
+		}
+		else return; 
 	}
 	else {
-		checkIconValidation(m_nextChar, item);
+		item = { (int)(std::floor(x / P_SIZE)), (int)(std::floor(y / P_SIZE)) };
+		checkIconValidation(item);
 	}
 
 }
@@ -65,12 +88,10 @@ void Board::draw(sf::RenderWindow& window){
 		for (size_t j = 0; j < m_col; j++) {
 			IconsBar icon = convertCharToIcon(m_rows[i].at(j).getSymbol());
 			if (icon != NON) {
-				//if ()
 				m_icon.draw(window, { (float)( i * P_SIZE ), (float)(j * P_SIZE) }, m_sideTools.getIconSprite(icon));
 			}
 		}
 	}
-	// draw all the => shap in row 
 }
 
 char Board::convertIconToChar(const IconsBar& icon) const {
@@ -101,29 +122,29 @@ IconsBar Board::convertCharToIcon(char c) const {
 	}
 }
 
-void Board::checkIconValidation(char c, sf::Vector2i place){
-	switch (c) {
-	case MOUSE_CH:
-		if (m_buttons._mouse) { m_rows[m_mouseLocation._row].at(m_mouseLocation._col).setSymbol(' '); }
-		else { m_buttons._mouse = true; }
-		m_rows[place.x].at(place.y).setSymbol(c);
-		m_mouseLocation._row = place.x;
-		m_mouseLocation._col = place.y;
-		break;
-	case CAT_CH: case CHEESE_CH: case WALL_CH: case GIFT_CH: case KEY_CH:
-		m_rows[place.x].at(place.y).setSymbol(c);
-		break;
+void Board::checkIconValidation(sf::Vector2i place){
+	if (m_iconShape != ERASE) {
+		switch (m_nextChar) {
+		case MOUSE_CH:
+			if (m_buttons._mouse) { m_rows[m_mouseLocation._row].at(m_mouseLocation._col).setSymbol(' '); }
+			else { m_buttons._mouse = true; }
+			m_rows[place.x].at(place.y).setSymbol(m_nextChar);
+			m_mouseLocation._row = place.x;
+			m_mouseLocation._col = place.y;
+			break;
+		case CAT_CH: case CHEESE_CH: case WALL_CH: case GIFT_CH: case KEY_CH: case DOOR_CH:
+			m_rows[place.x].at(place.y).setSymbol(m_nextChar);
+			break;
+		}
 	}
+	else { deleteObject(place); }
 }
 
-void Board::saveDeleteRestart(sf::Vector2i place) {
+void Board::saveRestart() {
 	switch (m_iconShape)
 	{
 	case SAVE:
 		saveToFile();
-		break;
-	case ERASE:
-		deleteObject(place);
 		break;
 	case RESET:
 		resetMap();
@@ -134,16 +155,17 @@ void Board::saveDeleteRestart(sf::Vector2i place) {
 }
 
 void Board::saveToFile() {
-	std::fstream outFile("Board.txt");
+	std::ofstream outFile("Board.txt");
 
 	if (!outFile) {
 		std::cerr << "Cannot Open file!";
 		exit(EXIT_FAILURE);
 	}
 
+	outFile << m_col << ' ' << m_row << '\n'; // Write cols and rows
 	for (size_t i = 0; i < m_row; i++) {
 		for (size_t j = 0; j < m_col; j++) {
-			outFile << m_rows[i][j].getSymbol();
+			outFile << m_rows[i].at(j).getSymbol();
 		}
 		outFile << '\n';
 	}
@@ -153,7 +175,7 @@ void Board::saveToFile() {
 
 void Board::resetMap() {
 	for (size_t i = 0; i < m_row; i++) {
-		for (int j = 0; j < m_col; j++) {
+		for (size_t j = 0; j < m_col; j++) {
 			m_rows[i][j].setSymbol(' ');
 		}
 	}

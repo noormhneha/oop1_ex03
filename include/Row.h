@@ -21,6 +21,7 @@ public:
 	Tile& begin();
 	const Tile& end() const;
 	Tile& end();
+	Tile getLine(int);
 
 	~Row();
 

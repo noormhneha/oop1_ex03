@@ -52,10 +52,10 @@ IconsBar SideTools::getNameOfIcon(sf::Vector2f vec)
 	return (IconsBar)0;
 }
 
-IconsBar SideTools::getIcon(sf::Vector2f pos, bool& save, bool& deleteMode, bool& restart)
+IconsBar SideTools::getIcon(sf::Vector2f pos, Buttons& buttons)
 {
 	IconsBar icon = getNameOfIcon(pos);
-	deleteMode = false;
+	buttons._delete = false;
 	switch (icon)
 	{
 	case MOUSE: return MOUSE;
@@ -66,17 +66,20 @@ IconsBar SideTools::getIcon(sf::Vector2f pos, bool& save, bool& deleteMode, bool
 	case DOOR: return DOOR;
 	case GIFT: return GIFT;
 	case SAVE:
-		save = true;
+		buttons._save = true;
 		return SAVE;
 	case ERASE:
-		deleteMode = true;	
+		buttons._delete = true;
 		return ERASE;
 	case RESET:
-		restart = true;
+		buttons._restart = true;
 		return RESET;
-	default: break;
+	default: return IconsBar();//break;
 	}
-	return IconsBar();
+}
+
+sf::Sprite SideTools::getIconSprite(int i) const {
+	return m_sprite[i];
 }
 
 

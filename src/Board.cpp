@@ -80,7 +80,6 @@ void Board::buttonReleased(sf::Event event, sf::RenderWindow& window)
 }
 
 
-
 void Board::draw(sf::RenderWindow& window){
 	m_sideTools.drawToolbar(window);
 
@@ -164,7 +163,7 @@ void Board::saveToFile() {
 
 	outFile << m_row << ' ' << m_col << '\n'; // Write cols and rows
 	for (size_t i = 0; i < (*m_rows).size(); i++) {
-		outFile << m_rows[i].getLine() << '\n';
+		outFile << m_rows[i].getLine() << '\n ';
 		//outFile << ;
 	}
 

@@ -1,17 +1,44 @@
 #pragma once
 
+#include <fstream>
+#include <iostream>
+
+#include "Row.h"
+
+// Symbols 
+const char MOUSE_CH = '%';
+const char CAT_CH = '^';
+const char DOOR_CH = 'D';
+const char WALL_CH = '#';
+const char KEY_CH = 'F';
+const char CHEESE_CH = '*';
+const char GIFT_CH = '$';
+const char ROAD_CH = ' ';
+
 struct Location {
 	int _row;
 	int _col;
 };
 
-struct Buttons {
-	bool _save = false;
-	bool _delete = false;
-	bool _restart = false;
-	bool _mouse = false;
-	unsigned int _cats = 0;
-	unsigned int  _keys = 0;
-	unsigned int _doors = 0;
-	unsigned int _gift = 0;
+class Utilities {
+public:
+	Utilities();
+
+protected:
+	void readData();
+	void readFromFile();
+	void readFromUser();
+	void information();
+	void fillData();
+
+	int m_row;
+	int m_col;
+
+	std::fstream m_file;
+
+	Row* m_rows;
+
+	bool m_thereIsMouse = false;
+	Location m_mouseLocation;
+
 };

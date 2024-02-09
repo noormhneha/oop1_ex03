@@ -1,6 +1,7 @@
 #include "Board.h"
 
 Board::Board() : Utilities() {
+	setBackground();
 	m_sideTools.setToolbar();
 }
 
@@ -8,6 +9,11 @@ Location Board::getLocation() const {
 	return { m_row, m_col };
 }
 
+void Board::setBackground() {
+	m_backgroundTexture.loadFromFile("Tom&Jerry3.png");
+	m_backgroundSprite.setTexture(m_backgroundTexture);
+	m_backgroundSprite.setScale((float)(m_row * P_SIZE) / m_backgroundTexture.getSize().x, (float)(m_col * P_SIZE) / m_backgroundTexture.getSize().y);
+}
 
 void Board::buttonReleased(sf::Event event, sf::RenderWindow& window) {
 	int x = event.mouseButton.x;
@@ -31,6 +37,7 @@ void Board::buttonReleased(sf::Event event, sf::RenderWindow& window) {
 
 
 void Board::draw(sf::RenderWindow& window){
+	window.draw(m_backgroundSprite);
 	m_sideTools.drawToolbar(window);
 
 	for (int i = 1; i < m_row; i++) {

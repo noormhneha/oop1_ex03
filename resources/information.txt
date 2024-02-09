@@ -4,4 +4,7 @@ You will make our game better! so make the best map you can build.
 You should Insert to numbers of how much your level size.
 First one for cols and the second for rows.
 The number of rows should be >= 10. about the cols should be >= 3.
+Please after building press the SAVE icon. 
+The page will Refresh and restart from begining. 
+Dont worry - You SAVED so we got your MAP!
 Thank you for helping us in our game!

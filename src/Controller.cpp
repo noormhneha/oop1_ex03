@@ -6,7 +6,7 @@ Controller::Controller() {
 
 void Controller::openWindow(){
 	Location location = m_board.getLocation();
-	m_window.create(sf::VideoMode((location._row * P_SIZE)  ,(location._col + 1) * P_SIZE), "Tom&Jerry");
+	m_window.create(sf::VideoMode(location._row * P_SIZE  ,location._col * P_SIZE), "Tom&Jerry");
 	while (m_window.isOpen()) {
 		m_window.clear();
 		m_board.draw(m_window);

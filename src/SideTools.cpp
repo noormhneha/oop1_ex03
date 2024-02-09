@@ -29,7 +29,6 @@ void SideTools::setToolbar() {
 		m_sprite[i].setPosition(m_positions[i]);
 		i++;
 	}
-
 	// Close the file
 	inputFile.close();
 }

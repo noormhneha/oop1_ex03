@@ -45,8 +45,12 @@ void Row::push_back(const Tile& val) {
 	m_size++;
 }
 
+void Row::increaseSize() {
+	m_rows++;
+}
+
 int Row::size() const {
-	return m_size;
+	return m_rows;
 }
 
 bool Row::empty() const {
@@ -84,7 +88,7 @@ void Row::copyData(Tile* arr1, const Tile* arr2) {
 
 std::string Row::getLine() {
 	std::string line;
-	for (int i = 0; i < m_size; ++i) {
+	for (int i = 0; i < m_size; i++) {
 		line += m_data[i].getSymbol();
 	}
 	return line;

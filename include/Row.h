@@ -16,6 +16,7 @@ public:
 	Tile& operator[](int);
 
 	void push_back(const Tile&);
+	void increaseSize();
 	int size() const;
 	bool empty() const;
 	const Tile& begin() const;
@@ -28,6 +29,7 @@ public:
 
 private:
 	int m_size;
+	int m_rows = 0;
 	bool m_isEmpty;
 
 	Tile* m_data;

@@ -12,6 +12,7 @@ public:
 
 	Location getLocation() const;
 
+
 	void buttonReleased(sf::Event event, sf::RenderWindow& window);
 
 	void draw(sf::RenderWindow&);
@@ -23,10 +24,14 @@ private:
 	void saveToFile();
 	void resetMap();
 	void deleteObject(sf::Vector2i);
+	void setBackground();
 
 	Icon m_icon; 
 	IconsBar m_iconShape; // new shape
 	char m_nextChar;
 
 	SideTools m_sideTools;
+
+	sf::Texture m_backgroundTexture;
+	sf::Sprite m_backgroundSprite;
 };

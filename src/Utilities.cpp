@@ -48,5 +48,6 @@ void Utilities::fillData() {
 			Tile tile(' ');
 			m_rows[i].push_back(tile);
 		}
+		m_rows->increaseSize();
 	}
 }

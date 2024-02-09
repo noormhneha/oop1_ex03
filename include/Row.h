@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Tile.h"
+#include <string>
 
 class Row {
 public:
@@ -21,7 +22,7 @@ public:
 	Tile& begin();
 	const Tile& end() const;
 	Tile& end();
-	Tile getLine(int);
+	std::string getLine();
 
 	~Row();
 

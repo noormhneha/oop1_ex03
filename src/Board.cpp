@@ -46,7 +46,7 @@ void Board::fillData() {
 	m_rows = new Row[m_row];
 	for (size_t i = 0; i < m_row; i++) {
 		for (int j = 0; j < m_col; j++) {
-			Tile tile(j, ' ');
+			Tile tile(' ');
 			m_rows[i].push_back(tile);
 		}
 	}
@@ -162,12 +162,10 @@ void Board::saveToFile() {
 		exit(EXIT_FAILURE);
 	}
 
-	outFile << m_col << ' ' << m_row << '\n'; // Write cols and rows
-	for (size_t i = 0; i < m_row; i++) {
-		for (size_t j = 0; j < m_col; j++) {
-			outFile << m_rows[i].at(j).getSymbol();
-		}
-		outFile << '\n';
+	outFile << m_row << ' ' << m_col << '\n'; // Write cols and rows
+	for (size_t i = 0; i < (*m_rows).size(); i++) {
+		outFile << m_rows[i].getLine() << '\n';
+		//outFile << ;
 	}
 
 	outFile.close();

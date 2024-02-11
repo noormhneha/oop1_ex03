@@ -25,7 +25,7 @@ void SideTools::setToolbar() {
 		m_pTexture[IconsBar(i)].loadFromFile(line);
 		m_sprite[i].setTexture(m_pTexture[i]);
 		
-		m_sprite[i].setScale(sf::Vector2f(((float)P_SIZE / m_sprite[i].getGlobalBounds().height), ((float)P_SIZE / m_sprite[i].getGlobalBounds().height)));
+		m_sprite[i].setScale(sf::Vector2f(((float)P_SIZE / m_sprite[i].getGlobalBounds().width), ((float)P_SIZE / m_sprite[i].getGlobalBounds().height)));
 		m_sprite[i].setPosition(m_positions[i]);
 		i++;
 	}

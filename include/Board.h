@@ -25,6 +25,7 @@ private:
 	void resetMap();
 	void deleteObject(sf::Vector2i);
 	void setBackground();
+	void changeBackground();
 
     Utilities m_utilities;
 
@@ -36,7 +37,7 @@ private:
 
 	sf::Texture m_backgroundTexture;
 	sf::Sprite m_backgroundSprite;
-    std::string m_background = "Tom&Jerry1.png";
+    std::string m_background = "Tom&Jerry3.png";
 
     int m_row;
     int m_col;

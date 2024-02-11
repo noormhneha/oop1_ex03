@@ -21,7 +21,7 @@ void Utilities::readFromUser() {
 		std::cin >> m_row;
 		std::cout << "Insert number of cols: ";
 		std::cin >> m_col;
-	} while (m_row < 10 && m_col < 3);
+	} while (m_row < 11 && m_col < 3);
 }
 
 void Utilities::information() {
@@ -52,14 +52,14 @@ void Utilities::fillData() {
 	}
 }
 
-int getRow() const{
+int Utilities::getRow() const{
     return m_row;
 }
 
-int getCol() const {
+int Utilities::getCol() const {
     return m_col;
 }
 
-Row* getData() const {
+Row* Utilities::getData() const {
     return m_rows;
 }

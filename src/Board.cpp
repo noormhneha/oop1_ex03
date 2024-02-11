@@ -14,14 +14,14 @@ Location Board::getLocation() const {
 
 void Board::setBackground() {
 	m_backgroundTexture.loadFromFile(m_background);
-	m_backgroundSprite.setTexture(m_backgroundTexture);
 	m_backgroundSprite.setScale((float)(m_row * P_SIZE) / m_backgroundTexture.getSize().x, (float)(m_col * P_SIZE) / m_backgroundTexture.getSize().y);
+	m_backgroundSprite.setTexture(m_backgroundTexture);
 }
 
 void Board::changeBackground() {
     if (m_background == "Tom&Jerry1.png"){
         m_background = "Tom&Jerry2.png";
-    } else if (str == "Tom&Jerry2.png") {
+    } else if (m_background == "Tom&Jerry2.png") {
         m_background = "Tom&Jerry3.png";
     } else {
         m_background = "Tom&Jerry1.png";

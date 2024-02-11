@@ -4,5 +4,8 @@
 
 class Mouse : public Icon {
 public:
-	Mouse() { m_shape = MOUSE; }
+    // Constructor
+    Mouse() {
+        m_shape = MOUSE; // Set the shape of the icon to MOUSE
+    }
 };

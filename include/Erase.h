@@ -4,5 +4,8 @@
 
 class Erase : public Icon {
 public:
-	Erase() { m_shape = ERASE; }
+    // Constructor
+    Erase() {
+        m_shape = ERASE; // Set the shape of the icon to ERASE
+    }
 };

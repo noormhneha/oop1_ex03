@@ -4,5 +4,8 @@
 
 class Cat : public Icon {
 public:
-	Cat() { m_shape = CAT;}
+    // Constructor
+    Cat() {
+        m_shape = CAT; // Set the shape of the icon to CAT
+    }
 };

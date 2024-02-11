@@ -2,8 +2,10 @@
 
 #include "Icon.h"
 
-class Wall : public Icon
-{
+class Wall : public Icon {
 public:
-	Wall() { m_shape = WALL; }
+    // Constructor
+    Wall() {
+        m_shape = WALL; // Set the shape of the icon to WALL
+    }
 };

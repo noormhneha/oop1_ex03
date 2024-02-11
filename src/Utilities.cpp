@@ -42,9 +42,9 @@ void Utilities::information() {
 }
 
 void Utilities::fillData() {
-	m_rows = new Row[m_row];
-	for (size_t i = 0; i < m_row; i++) {
-		for (int j = 0; j < m_col; j++) {
+	m_rows = new Row[m_col];
+	for (size_t i = 0; i < m_col; i++) {
+		for (size_t j = 0; j < m_row; j++) {
 			Tile tile(' ');
 			m_rows[i].push_back(tile);
 		}

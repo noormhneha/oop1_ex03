@@ -5,7 +5,7 @@
 
 enum IconsBar { MOUSE, CAT, CHEESE, WALL, KEY, DOOR, GIFT, SAVE, ERASE, RESET, BACKGROUND, NON};
 
-const int NUM_OF_ICONS = 12; // number of icons
+const int NUM_OF_ICONS = 11; // number of icons
 const unsigned int P_SIZE = 40; // pixel size
 
 class SideTools

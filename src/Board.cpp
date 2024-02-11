@@ -14,7 +14,7 @@ Location Board::getLocation() const {
 
 void Board::setBackground() {
 	m_backgroundTexture.loadFromFile(m_background);
-	m_backgroundSprite.setScale((float)(m_row * P_SIZE) / m_backgroundTexture.getSize().x, (float)(m_col * P_SIZE) / m_backgroundTexture.getSize().y);
+	m_backgroundSprite.setScale((float)(m_col * P_SIZE) / m_backgroundTexture.getSize().x, (float)(m_row * P_SIZE) / m_backgroundTexture.getSize().y);
 	m_backgroundSprite.setTexture(m_backgroundTexture);
 }
 
@@ -57,11 +57,11 @@ void Board::draw(sf::RenderWindow& window){
 	window.draw(m_backgroundSprite);
 	m_sideTools.drawToolbar(window);
 
-	for (int i = 1; i < m_row; i++) {
+	for (int i = 0; i < m_row; i++) {
 		for (int j = 0; j < m_col; j++) {
-			IconsBar icon = convertCharToIcon(m_rows[i].at(j).getSymbol());
+			IconsBar icon = convertCharToIcon(m_rows[j].at(i).getSymbol());
 			if (icon != NON) {
-				m_icon.draw(window, { (float)( i * P_SIZE ), (float)(j * P_SIZE) }, m_sideTools.getIconSprite(icon));
+				m_icon.draw(window, { (float)( j * P_SIZE ), (float)(i * P_SIZE) }, m_sideTools.getIconSprite(icon));
 			}
 		}
 	}
@@ -134,16 +134,21 @@ void Board::saveToFile() {
 		std::cerr << "Cannot Open file!";
 		exit(EXIT_FAILURE);
 	}
-	outFile << m_row << ' ' << m_col << '\n'; // Write cols and rows
-	for (size_t i = 0; i < (*m_rows).size(); i++) {
-		outFile << m_rows[i].getLine() << '\n';
+	outFile << m_row << ' ' << m_col << "\n\n"; // Write cols and rows
+
+	for (size_t i = 0; i < m_row; i++) {
+		for (size_t j = 1; j < m_col; j++) {
+			outFile << m_rows[j].at(i).getSymbol();
+		}
+		outFile << std::endl;
 	}
+
 	outFile.close();
 }
 
 void Board::resetMap() {
-	for (int i = 0; i < m_row; i++) {
-		for (int j = 0; j < m_col; j++) {
+	for (int i = 0; i < m_col; i++) {
+		for (int j = 0; j < m_row; j++) {
 			m_rows[i][j].setSymbol(' ');
 		}
 	}

@@ -88,7 +88,7 @@ void Row::copyData(Tile* arr1, const Tile* arr2) {
 
 std::string Row::getLine() {
 	std::string line;
-	for (int i = 0; i < m_size; i++) {
+	for (int i = 1; i < m_rows; i++) {
 		line += m_data[i].getSymbol();
 	}
 	return line;

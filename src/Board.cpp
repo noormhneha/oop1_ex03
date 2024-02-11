@@ -118,8 +118,7 @@ void Board::saveRestart() {
 	{
 	case SAVE:
 		saveToFile();
-		resetMap();
-		break;
+		exit(EXIT_SUCCESS);
 	case RESET:
 		resetMap();
 		break;

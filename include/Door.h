@@ -4,5 +4,8 @@
 
 class Door : public Icon {
 public:
-	Door() { m_shape = DOOR; };
+    // Constructor
+    Door() {
+        m_shape = DOOR; // Set the shape of the icon to DOOR
+    }
 };

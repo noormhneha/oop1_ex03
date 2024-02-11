@@ -4,5 +4,8 @@
 
 class Gift : public Icon {
 public:
-	Gift() { m_shape = GIFT; }
+    // Constructor
+    Gift() {
+        m_shape = GIFT; // Set the shape of the icon to GIFT
+    }
 };

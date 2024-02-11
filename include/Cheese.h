@@ -4,5 +4,8 @@
 
 class Cheese : public Icon {
 public:
-	Cheese() { m_shape = CHEESE;};
+    // Constructor
+    Cheese() {
+        m_shape = CHEESE; // Set the shape of the icon to CHEESE
+    }
 };

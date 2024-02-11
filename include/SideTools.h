@@ -1,27 +1,34 @@
 #pragma once
-#include <SFML\Graphics.hpp>
+
+#include <SFML/Graphics.hpp> // Include SFML graphics library
 #include "Utilities.h"
 
+// Enumeration representing different icons on the toolbar
+enum IconsBar { MOUSE, CAT, CHEESE, WALL, KEY, DOOR, GIFT, SAVE, ERASE, RESET, BACKGROUND, NON };
 
-enum IconsBar { MOUSE, CAT, CHEESE, WALL, KEY, DOOR, GIFT, SAVE, ERASE, RESET, BACKGROUND, NON};
+const int NUM_OF_ICONS = 11; // Number of icons
+const unsigned int P_SIZE = 40; // Pixel size for icons
 
-const int NUM_OF_ICONS = 11; // number of icons
-const unsigned int P_SIZE = 40; // pixel size
-
-class SideTools
-{
+class SideTools {
 public:
-	SideTools();
+    // Constructor
+    SideTools();
 
-	void setToolbar();
-	void drawToolbar(sf::RenderWindow& window);
+    // Method to set up the toolbar
+    void setToolbar();
 
-	IconsBar getNameOfIcon(sf::Vector2f);
-	IconsBar getIcon(sf::Vector2f);
+    // Method to draw the toolbar on the window
+    void drawToolbar(sf::RenderWindow& window);
 
-	sf::Sprite getIconSprite(int) const;
+    // Methods to get the name and icon based on a given position
+    IconsBar getNameOfIcon(sf::Vector2f);
+    IconsBar getIcon(sf::Vector2f);
+
+    // Method to get the sprite of an icon
+    sf::Sprite getIconSprite(int) const;
+
 private:
-	sf::Vector2f m_positions[NUM_OF_ICONS];
-	sf::Texture m_pTexture[NUM_OF_ICONS];
-	sf::Sprite m_sprite[NUM_OF_ICONS];
+    sf::Vector2f m_positions[NUM_OF_ICONS]; // Array of positions for icons
+    sf::Texture m_pTexture[NUM_OF_ICONS]; // Array of textures for icons
+    sf::Sprite m_sprite[NUM_OF_ICONS]; // Array of sprites for icons
 };

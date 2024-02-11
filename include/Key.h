@@ -4,5 +4,8 @@
 
 class Key : public Icon {
 public:
-	Key() {  m_shape = KEY; }
+    // Constructor
+    Key() {
+        m_shape = KEY; // Set the shape of the icon to KEY
+    }
 };

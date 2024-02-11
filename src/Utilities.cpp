@@ -51,3 +51,15 @@ void Utilities::fillData() {
 		m_rows->increaseSize();
 	}
 }
+
+int getRow() const{
+    return m_row;
+}
+
+int getCol() const {
+    return m_col;
+}
+
+Row* getData() const {
+    return m_rows;
+}

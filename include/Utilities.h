@@ -23,8 +23,11 @@ struct Location {
 class Utilities {
 public:
 	Utilities();
+    int getRow() const;
+    int getCol() const;
+    Row* getData() const;
 
-protected:
+private:
 	void readData();
 	void readFromFile();
 	void readFromUser();
@@ -37,8 +40,4 @@ protected:
 	std::fstream m_file;
 
 	Row* m_rows;
-
-	bool m_thereIsMouse = false;
-	Location m_mouseLocation;
-
 };

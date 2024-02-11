@@ -1,6 +1,9 @@
 #include "Board.h"
 
-Board::Board() : Utilities() {
+Board::Board() {
+    m_row = m_utilities.getRow();
+    m_col = m_utilities.getCol();
+    m_rows = m_utilities.getData();
 	setBackground();
 	m_sideTools.setToolbar();
 }
@@ -10,9 +13,20 @@ Location Board::getLocation() const {
 }
 
 void Board::setBackground() {
-	m_backgroundTexture.loadFromFile("Tom&Jerry3.png");
+	m_backgroundTexture.loadFromFile(m_background);
 	m_backgroundSprite.setTexture(m_backgroundTexture);
 	m_backgroundSprite.setScale((float)(m_row * P_SIZE) / m_backgroundTexture.getSize().x, (float)(m_col * P_SIZE) / m_backgroundTexture.getSize().y);
+}
+
+void Board::changeBackground() {
+    if (m_background == "Tom&Jerry1.png"){
+        m_background = "Tom&Jerry2.png";
+    } else if (str == "Tom&Jerry2.png") {
+        m_background = "Tom&Jerry3.png";
+    } else {
+        m_background = "Tom&Jerry1.png";
+    }
+    setBackground();
 }
 
 void Board::buttonReleased(sf::Event event, sf::RenderWindow& window) {
@@ -23,11 +37,14 @@ void Board::buttonReleased(sf::Event event, sf::RenderWindow& window) {
 	sf::Vector2i item;
 	if (pos.x == 0) {
 		m_iconShape = m_sideTools.getIcon(pos);
-		if (m_iconShape != ERASE) {
+		if (m_iconShape != ERASE && m_iconShape != BACKGROUND) {
 			m_nextChar = convertIconToChar(m_iconShape);
 			saveRestart();
 		}
-		else return; 
+		else if (m_iconShape == BACKGROUND){
+            changeBackground();
+        }
+        else return;
 	}
 	else {
 		item = { (int)(std::floor(x / P_SIZE)), (int)(std::floor(y / P_SIZE)) };

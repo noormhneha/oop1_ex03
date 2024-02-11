@@ -6,7 +6,7 @@
 #include "Utilities.h"
 #include "SideTools.h"
 
-class Board : public Utilities {
+class Board {
 public:
 	Board();
 
@@ -26,6 +26,8 @@ private:
 	void deleteObject(sf::Vector2i);
 	void setBackground();
 
+    Utilities m_utilities;
+
 	Icon m_icon; 
 	IconsBar m_iconShape; // new shape
 	char m_nextChar;
@@ -34,4 +36,13 @@ private:
 
 	sf::Texture m_backgroundTexture;
 	sf::Sprite m_backgroundSprite;
+    std::string m_background = "Tom&Jerry1.png";
+
+    int m_row;
+    int m_col;
+
+    Row* m_rows;
+
+    bool m_thereIsMouse = false;
+    Location m_mouseLocation;
 };
